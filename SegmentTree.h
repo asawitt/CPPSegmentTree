@@ -45,8 +45,7 @@ template <typename T> class SegmentTree {
 			};
 			//Exits if input out of range of array
 			if (start < 0 || end >= arr.size()){
-				std::cout << "Invalid input, exiting..." << std::endl;
-				return -1;
+				std::cout << "Invalid input" << std::endl;
 			}
 			std::function<Optional(Node*, int, int)> helper;
 			helper = [this,start, end, &helper](Node* cur, int c_s, int c_e)->Optional {
@@ -75,21 +74,8 @@ template <typename T> class SegmentTree {
 			Optional x = helper(root,0,arr.size()-1);
 			if (!x.empty) return x.value;
 			else {
-				std::cout << "Logical error, exiting..." << std::endl;
-				return -1;
+				std::cout << "Logical error" << std::endl;
 			}
 		}
 };
-
-int e_sum(int e1, int e2){
-	return e1 + e2; 
-}
-
-int main(){
-	std::vector<int> x = {1,2,3,4, 5, 6 ,7 ,8 ,9, 10};
-	SegmentTree<int> st = SegmentTree<int>(&e_sum, x);
-	std::cout << st.query(3,7) << std::endl;
-	return 0;
-}
-
 #endif
